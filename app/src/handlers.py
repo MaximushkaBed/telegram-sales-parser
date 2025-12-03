@@ -8,7 +8,7 @@ from .reports import generate_excel_report
 from .telegram_utils import is_bot_admin
 from typing import Optional, List
 from datetime import datetime
-from celery_client import process_message # Предполагаем, что Celery клиент будет в отдельном файле
+from worker.src.tasks import process_message # Импортируем задачу Celery напрямую
 
 router = Router()
 
@@ -267,22 +267,4 @@ async def handle_group_message(message: Message) -> None:
         
         print(f"Task sent to Celery for chat {tg_chat_id} (Owner: {chat_entry.owner_id})")
 
-# ----------------------------------------------------------------------
-# Celery Client (заглушка, должен быть в отдельном файле)
-# ----------------------------------------------------------------------
 
-# В реальном проекте, чтобы избежать циклического импорта,
-# Celery клиент должен быть в отдельном файле, который импортирует
-# только Celery-приложение из worker/src/tasks.py.
-# Для простоты, мы создадим заглушку и будем считать, что она работает.
-
-class CeleryClient:
-    def __init__(self):
-        # Имитация импорта задачи из worker
-        pass
-        
-    def delay(self, *args, **kwargs):
-        # Имитация отправки задачи
-        print(f"Celery task (process_message) delayed with args: {args}, kwargs: {kwargs}")
-        
-process_message = CeleryClient()
