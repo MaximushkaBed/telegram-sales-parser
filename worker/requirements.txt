@@ -1,0 +1,20 @@
+# Celery
+celery[redis]
+
+# Database
+sqlmodel
+asyncpg
+
+# LLM API
+openai # Для LLM-классификации
+
+# NLP (Простая реализация для MVP)
+scikit-learn
+nltk
+
+# Reporting
+pandas
+xlsxwriter
+
+# Utilities
+python-dotenv

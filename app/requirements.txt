@@ -1,0 +1,17 @@
+# Web Framework and Server
+fastapi
+uvicorn[standard]
+
+# Telegram Bot Library
+aiogram
+
+# Database
+sqlmodel
+asyncpg
+
+# Reporting
+pandas
+xlsxwriter
+
+# Utilities
+python-dotenv
